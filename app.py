@@ -16,14 +16,26 @@ DEFAULT_ADMIN_USERNAME = os.environ.get("HUB_ADMIN_USER", "admin_dev")
 DEFAULT_ADMIN_PASSWORD = os.environ.get("HUB_ADMIN_PASS", "dev_password")
 
 # --- Configuração do banco de dados (Conexão PostgreSQL) ---
+# --- Configuração do banco de dados (Conexão PostgreSQL via variáveis de ambiente) ---
+DB_HOST = os.environ.get("DB_HOST")
+DB_NAME = os.environ.get("DB_NAME")
+DB_USER = os.environ.get("DB_USER")
+DB_PASS = os.environ.get("DB_PASS")
+DB_PORT = os.environ.get("DB_PORT", "5432")  # Porta padrão do PostgreSQL
+
 def get_db_connection():
     """Estabelece e retorna uma conexão com o banco de dados PostgreSQL."""
     try:
-        conn = psycopg2.connect(DB_URL)
+        conn = psycopg2.connect(
+            host=DB_HOST,
+            database=DB_NAME,
+            user=DB_USER,
+            password=DB_PASS,
+            port=DB_PORT
+        )
         return conn
     except Exception as e:
         print(f"Erro ao conectar ao banco de dados PostgreSQL: {e}")
-        # Em um aplicativo real, você pode querer levantar uma exceção ou exibir uma mensagem de erro ao usuário.
         return None
 
 def setup_database():
