@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.env
+.idea/
+.vscode/
+*.egg-info/
+dist/
+build/
+*.so
+lib/
+include/
+bin/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.sqlite3
+*.db # Ignora arquivos de banco de dados SQLite (como reservas.db)
+
+# Docker
+.dockerignore
+*.swp
+.DS_Store
+
+# Flet specific (se houver, ajuste conforme necessário)
+# Ex: se o Flet criar algum arquivo de cache na raiz
+flet_hot_reload_config.json
